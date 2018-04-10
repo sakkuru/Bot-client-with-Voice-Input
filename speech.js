@@ -1,5 +1,8 @@
 const params = BotChat.queryParams(location.search);
 
+const speechAPIKey = params['speechKey'] || '838cdd47beb448e5ba0bc588b30df15d';
+const directlineSecret = params['speechKey'] || 'q1kbM8Z8yh8.cwA.hwE.kIf0s77EricBr4AIY5m6pbGl7BxSMRUbRbwfPpTv878';
+
 const user = {
     id: params['userid'] || 'userid',
     name: params['username'] || 'username'
@@ -9,8 +12,6 @@ const bot = {
     id: params['botid'] || 'botid',
     name: params['botname'] || 'botname'
 };
-
-const speechAPIKey = params['speechKey'] || '838cdd47beb448e5ba0bc588b30df15d';
 
 const speechOptions = {
     speechRecognizer: new CognitiveServices.SpeechRecognizer({
@@ -33,6 +34,6 @@ BotChat.App({
     user: user,
 
     directLine: {
-        secret: params['secret'] // Your bot's directline secret
+        secret: directlineSecret
     }
 }, document.getElementById('BotChatGoesHere'));
